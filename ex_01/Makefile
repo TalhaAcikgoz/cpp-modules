@@ -9,3 +9,11 @@ all: $(NAME)
 $(NAME): $(OBJECT)
 	$(CC) $(FLAG) $(OBJECT) -o $(NAME)
 	rm -rf $(OBJECT)
+
+fclean: clean
+	rm -rf $(NAME)
+
+clean:
+	rm -rf $(OBJECT)
+
+re: fclean all

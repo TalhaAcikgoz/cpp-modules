@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
+
+//CLASS
 
 class contact {
 public:
@@ -10,8 +13,8 @@ public:
 	std::string get_name();
 	void		set_name(std::string);
 	//surname
-	std::string get_lastname();
 	void		set_lastname(std::string);
+	std::string get_lastname();
 	//nickname
 	std::string get_nickname();
 	void		set_nickname(std::string);
@@ -30,8 +33,16 @@ private:
 };
 
 class phonebook {
+public:
+	int		add();
+	int		search();
+
 	contact	cnt[8];
 	int		idx;
 };
+
+// FUNCTION
+
+int take_input();
 
 #endif

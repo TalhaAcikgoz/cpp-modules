@@ -1,18 +1,34 @@
 #include "PhoneBook.hpp"
 
-int start(void) {
-    int input;
-    std::cout << " + 1 FOR ADD + 2 FOR SEARCH + 3 FOR EXIT +" << std::endl;
-    std::cin >> input; std::cin.ignore();
-    std::cout << sizeof(input) << input << std::endl;
-}
-
+phonebook book;
 int main(void) {
-    phonebook book;
-    while (true) {
-        if (!start()) {
-            
-        }
-    }
-    return (0);
+	std::string input;
+	while (true) {
+a:
+		std::cout << std::endl	
+		<< "+-------------------------------------------------------+" << std::endl
+		<< "|   1 : Add  |  2 : Search  |  3 : Exit  |  Maybe More  |" << std::endl
+		<< "+-------------------------------------------------------+" << std::endl;
+		switch (take_input())
+		{
+		case -1:
+			goto a;
+		case 1:
+			book.add();
+			goto a;
+		case 2:
+			book.search();
+			break;
+		case 3:
+			exit(3);
+		case 31:
+			std::cout << "RICKROLLED";
+			system("python3 open_url.py");
+			goto a;
+		default:
+			goto a;
+			break;
+		}
+	}
+	return (0);
 }
