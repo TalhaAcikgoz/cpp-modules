@@ -38,21 +38,30 @@ int console_log(){
 }
 
 int print_short_cnt(int i) {
-	std::cout	<< '|' << std::right << std::setw(9) << book.cnt[i].get_name().substr(0, 9) << ' '
-				<< '|' << std::right << std::setw(9) << book.cnt[i].get_lastname().substr(0, 9) << ' '
-				<< '|' << std::right << std::setw(9) << book.cnt[i].get_nickname().substr(0, 9) << ' '
-				<< '|' << std::right << std::setw(9) << book.cnt[i].get_pnumber().substr(0, 9) << ' '
-				<< '|' << std::right << std::setw(9) << book.cnt[i].get_secret().substr(0, 9) << ' ' << '|' << ' ' << i
-	<< std::endl<< "+------------------------------------------------------+" << std::endl;;
+	if (book.cnt[i].get_name().length() > 10)		{std::cout << '|' << std::right << std::setw(9) << book.cnt[i].get_name().substr(0, 9) << '.';}
+	else											{std::cout << '|' << std::right << std::setw(10) << book.cnt[i].get_name();}
+	if (book.cnt[i].get_lastname().length() > 10)	{std::cout << '|' << std::right << std::setw(9) << book.cnt[i].get_lastname().substr(0, 9) << '.';}
+	else											{std::cout << '|' << std::right << std::setw(10) << book.cnt[i].get_lastname();}
+	if (book.cnt[i].get_nickname().length() > 10)	{std::cout << '|' << std::right << std::setw(9) << book.cnt[i].get_nickname().substr(0, 9) << '.';}
+	else											{std::cout << '|' << std::right << std::setw(10) << book.cnt[i].get_nickname();}
+	if (book.cnt[i].get_pnumber().length() > 10)	{std::cout << '|' << std::right << std::setw(9) << book.cnt[i].get_pnumber().substr(0, 9) << '.';}
+	else											{std::cout << '|' << std::right << std::setw(10) << book.cnt[i].get_pnumber();}
+	if (book.cnt[i].get_secret().length() > 10)		{std::cout << '|' << std::right << std::setw(9) << book.cnt[i].get_secret().substr(0, 9) << '.';}
+	else											{std::cout << '|' << std::right << std::setw(10) << book.cnt[i].get_secret();}
+	std::cout << '|' << ' ' << i << std::endl<< "+------------------------------------------------------+" << std::endl;
 	return 1;
 }
 
 int print_long_cnt(int i) {
-	std::cout	<< "Name: "			<< book.cnt[i].get_name() << std::endl
-				<< "Lastname: "		<< book.cnt[i].get_lastname() << std::endl
-				<< "Nickname: "		<< book.cnt[i].get_nickname() << std::endl
-				<< "Phone Number: "	<< book.cnt[i].get_pnumber() << std::endl
-				<< "Secred: "		<< book.cnt[i].get_secret() << std::endl;
+	if (book.cnt[i].get_name().length()) {
+		std::cout	<< "Name: "			<< book.cnt[i].get_name() << std::endl
+					<< "Lastname: "		<< book.cnt[i].get_lastname() << std::endl
+					<< "Nickname: "		<< book.cnt[i].get_nickname() << std::endl
+					<< "Phone Number: "	<< book.cnt[i].get_pnumber() << std::endl
+					<< "Secred: "		<< book.cnt[i].get_secret() << std::endl;
+	} else {
+		std::cout << " Apsent contact. " << std::endl;
+	}
 	return 0;
 }
 
@@ -67,9 +76,11 @@ int phonebook::search() {
 }
 
 int	phonebook::add() {
+a:
 	try {
 		std::cout << std::endl;
-		std::cout << "Name: "		 ; this->cnt[idx % 8].set_name(take_string());
+		std::cout << "Name: "		 ; 
+		if (!this->cnt[idx % 8].set_name(take_string())) {goto a;}
 		std::cout << "Lastname: "	 ; this->cnt[idx % 8].set_lastname(take_string());
 		std::cout << "Nickname: "	 ; this->cnt[idx % 8].set_nickname(take_string());
 		std::cout << "Phone Number: "; this->cnt[idx % 8].set_pnumber(take_string());
@@ -88,7 +99,12 @@ std::string contact::get_nickname() {return (this->nickname);}
 std::string contact::get_pnumber() {return (this->pnumber);}
 std::string contact::get_secret() {return (this->secret);}
 
-void	contact::set_name(std::string _name) {this->name = _name;}
+int contact::set_name(std::string _name) {
+	if (_name.empty()){
+		std::cout << " Input is cant be empty. "; return (0);}
+	this->name = _name;
+	return (1);
+}
 void	contact::set_lastname(std::string _lastname) {this->lastname = _lastname;}
 void	contact::set_nickname(std::string _nickname) {this->nickname = _nickname;}
 void	contact::set_pnumber(std::string _pnumber) {this->pnumber = _pnumber;}

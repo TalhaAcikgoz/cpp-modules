@@ -23,7 +23,6 @@ a:
 			exit(3);
 		case 31:
 			std::cout << "RICKROLLED";
-			system("python3 open_url.py");
 			goto a;
 		default:
 			goto a;

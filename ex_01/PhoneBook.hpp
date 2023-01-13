@@ -11,7 +11,7 @@ class contact {
 public:
 	//name
 	std::string get_name();
-	void		set_name(std::string);
+	int 		set_name(std::string);
 	//surname
 	void		set_lastname(std::string);
 	std::string get_lastname();
