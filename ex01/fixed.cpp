@@ -1,28 +1,33 @@
 #include "fixed.hpp"
 
 fixed::fixed() {
-	this->raw_bits = 0;
 	std::cout << "default constructer called" << std::endl;
+	this->setRawBits(0);
 }
 
 fixed::fixed(const int raw) {
-	this->setRawBits(raw);
 	std::cout << "Int constructor called" << std::endl;
+	this->setRawBits(raw << this->fractional);
 }
 
-fixed::fixed(fixed &copy) {
+fixed::fixed(const float raw) {
+	std::cout << "float consturcter called" << std::endl;
+	this->setRawBits(std::roundf(raw * (1 << this->fractional)));
+}
+
+fixed::fixed(fixed const &copy) {
 	std::cout << "copy constructer called" << std::endl;
-	this->raw_bits = copy.getRawBits();
+	*this = copy;
 }
 
 fixed& fixed::operator=(const fixed& c) {
 	std::cout << "copy assignment operator called" << std::endl;
-	this->raw_bits = c.getRawBits();
+	this->setRawBits(c.getRawBits());
 	return *this;
 }
 
 std::ostream& operator<<(std::ostream &out, const fixed &copy) {
-	out << copy.getRawBits();
+	out << (copy.getRawBits() / pow(2, 8));
 	return out;
 }
 
@@ -31,11 +36,14 @@ fixed::~fixed() {
 }
 
 int fixed::getRawBits(void) const {
-	std::cout << "getRawBits member func called" << std::endl;
 	return raw_bits;
 }
 
 void	fixed::setRawBits(int const raw) {
-	std::cout << "setRawBits member func called" << std::endl;
 	this->raw_bits = raw;
+}
+
+int		fixed::toInt(void) const {
+	int temp = this->getRawBits() / (1 << this->fractional);
+	return temp;
 }
