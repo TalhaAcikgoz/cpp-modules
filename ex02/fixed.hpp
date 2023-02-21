@@ -15,8 +15,20 @@ public:
 	fixed(const float raw);
 	fixed(fixed const &copy);
 	~fixed();
-	fixed&	operator=(const fixed&);
-	bool	operator>(const fixed& one);
+
+	fixed&	operator=(const fixed& c);
+	fixed	operator+(const fixed& o);
+	fixed	operator-(const fixed& o);
+	fixed	operator*(const fixed& o);
+	fixed	operator/(const fixed& o);
+
+	bool	operator>(const fixed& o);
+	bool	operator<(const fixed& o);
+	bool	operator>=(const fixed& o);
+	bool	operator<=(const fixed& o);
+	bool	operator==(const fixed& o);
+	bool	operator!=(const fixed& o);
+
 	int		getRawBits(void) const;
 	void	setRawBits(int const raw);
 	int		toInt(void) const ;

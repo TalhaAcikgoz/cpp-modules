@@ -26,8 +26,64 @@ fixed& fixed::operator=(const fixed& c) {
 	return *this;
 }
 
-bool	operator>(const fixed& one) {
-	
+fixed	fixed::operator+(const fixed& o) {
+	std::cout << "+" << std::endl;
+	this->setRawBits(this->getRawBits() + o.getRawBits());
+	return *this;
+}
+
+fixed	fixed::operator-(const fixed& o) {
+	std::cout << '-' << std::endl;
+	this->setRawBits(this->getRawBits() - o.getRawBits());
+	return *this;
+}
+
+fixed	fixed::operator*(const fixed& o) {
+	std::cout << '*' << std::endl;
+	this->setRawBits(this->getRawBits() * o.getRawBits());
+	return *this;
+}
+
+fixed	fixed::operator/(const fixed& o) {
+	std::cout << '/' << std::endl;
+	this->setRawBits(this->getRawBits() / o.getRawBits());
+	return *this;
+}
+
+bool	fixed::operator>(const fixed& o) {
+	if (this->getRawBits() > o.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	fixed::operator<(const fixed& o) {
+	if (this->getRawBits() < o.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	fixed::operator>=(const fixed& o) {
+	if (this->getRawBits() >= o.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	fixed::operator<=(const fixed& o) {
+	if (this->getRawBits() <= o.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	fixed::operator==(const fixed& o) {
+	if (this->getRawBits() == o.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	fixed::operator!=(const fixed& o) {
+	if (this->getRawBits() != o.getRawBits())
+		return (true);
+	return (false);
 }
 
 std::ostream& operator<<(std::ostream &out, const fixed &copy) {
