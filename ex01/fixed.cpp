@@ -47,3 +47,8 @@ int		fixed::toInt(void) const {
 	int temp = this->getRawBits() / (1 << this->fractional);
 	return temp;
 }
+
+float	fixed::toFloat(void) const {
+	float	temp = this->getRawBits() * (1 << this->fractional);
+	return temp;
+}

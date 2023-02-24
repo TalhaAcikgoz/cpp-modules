@@ -10,28 +10,47 @@ private:
 	int					raw_bits;
 	static const int	fractional = 8;
 public:
-	fixed();
-	fixed(const int raw);
-	fixed(const float raw);
-	fixed(fixed const &copy);
-	~fixed();
+		fixed();
+		fixed(const fixed&);
+		fixed(const int);
+		fixed(const float);
+		~fixed();
 
-	fixed&	operator=(const fixed& c);
-	fixed	operator+(const fixed& o);
-	fixed	operator-(const fixed& o);
-	fixed	operator*(const fixed& o);
-	fixed	operator/(const fixed& o);
+        //comparison operators
+        bool operator>(const fixed&) const;
+        bool operator<(const fixed&) const;
+        bool operator>=(const fixed&) const;
+        bool operator<=(const fixed&) const;
+        bool operator==(const fixed&) const;
+        bool operator!=(const fixed&) const;
+		
+        //arithmetic operators
+        fixed operator+(const fixed&) const;
+        fixed operator-(const fixed&)const;
+        fixed operator*(const fixed&)const;
+        fixed operator/(const fixed&)const;
 
-	bool	operator>(const fixed& o);
-	bool	operator<(const fixed& o);
-	bool	operator>=(const fixed& o);
-	bool	operator<=(const fixed& o);
-	bool	operator==(const fixed& o);
-	bool	operator!=(const fixed& o);
+        //assignment operator
+        fixed& operator=(const fixed&);
 
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
-	int		toInt(void) const ;
+        //min max
+        static const fixed& min(const fixed &, const fixed &);
+        static const fixed& max(const fixed &, const fixed &);
+
+        //++ --
+        fixed &operator++(void);
+        fixed operator++(int);
+        fixed &operator--(void);
+        fixed operator--(int);
+
+
+
+
+		int getRawBits(void) const;
+		void setRawBits(int const);
+		
+        float toFloat(void) const;
+        int toInt(void) const;
 };
 
 std::ostream&	operator<<(std::ostream &out, const fixed &copy);

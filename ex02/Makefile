@@ -5,13 +5,13 @@ OBJECT = $(patsubst %.cpp, %.o, $(SOURCE))
 FLAG = -Wall -Wextra -Werror
 
 all: $(OBJECT)
-	$(CC) $(FLAG) $(OBJECT) -o $(NAME)
-	$(MAKE) clean
+	@$(CC) $(FLAG) $(OBJECT) -o $(NAME)
+	@$(MAKE) clean
 
 clean:
-	rm -rf $(OBJECT)
+	@rm -rf $(OBJECT)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
