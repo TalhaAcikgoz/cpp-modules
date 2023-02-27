@@ -27,7 +27,7 @@ int			ClapTrap::getHP(void) {return this->hp;}
 int			ClapTrap::getStamina(void) {return this->stamina;}
 int			ClapTrap::getAD(void) {return this->ad;}
 
-std::ostream&   operator<<(std::ostream o, ClapTrap& c) {
-	o << "Name: " << c.getName() << "HP: " << c.getHP() << "Stamina: " << c.getStamina() << "AD: " << c.getAD();
+std::ostream&   operator<<(std::ostream& o, ClapTrap& c) {
+	o << "Name: " << c.getName() << " HP: " << c.getHP() << " Stamina: " << c.getStamina() << " AD: " << c.getAD();
     return o;
 }

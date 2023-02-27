@@ -27,4 +27,4 @@ public:
 	void	beRepaired(unsigned int amount);
 };
 
-std::ostream& operator<<(std::ostream o, ClapTrap& c);
+std::ostream& operator<<(std::ostream& o, ClapTrap& c);
