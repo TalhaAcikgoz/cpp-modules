@@ -22,6 +22,11 @@ public:
 	int			getStamina(void);
 	int			getAD(void);
 
+	void	setName(std::string _name);
+	void	setHP(int _hp);
+	void	setStamina(int _stamina);
+	void	setAD(int _ad);
+
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);

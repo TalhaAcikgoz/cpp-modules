@@ -1,10 +1,18 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main() {
-    ClapTrap n("clap", 14, 13, 3);
-    std::cout << n << std::endl;
-    n.attack("aaa");
-    n.beRepaired(20);
-    n.takeDamage(4);
-    n.attack("bb");
+	{
+		ScavTrap n("clap", 14, 13, 3);
+		std::cout << n << std::endl;
+		n.attack("aaa");
+		n.beRepaired(20);
+		n.takeDamage(4);
+		n.attack("bb");
+	}
+	{
+		std::cout << std::endl << "ScavTrap" << std::endl << std::endl;
+		ScavTrap	a;
+		ScavTrap	b("eyubi", 100, 49, 28);
+		ScavTrap	c(b);
+	}
 }

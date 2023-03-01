@@ -1,20 +1,20 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string _name, int _hp, int _stamina, int _ad): name(_name), hp(_hp), stamina(_stamina), ad(_ad) {
-    std::cout << "asignment constructor called" << std::endl;
+    std::cout << "ClapTrap asignment constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(): hp(10), stamina(10), ad(0) {
-    std::cout << "default constructer called" << std::endl;
+    std::cout << "ClapTrap default constructer called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& c) {
     *this = c;
-    std::cout << "copy constructor called" << std::endl;
+    std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 ClapTrap&    ClapTrap::operator=(ClapTrap& c) {
-    std::cout << "copy asignment operator called" << std::endl;
+    std::cout << "ClapTrap copy asignment operator called" << std::endl;
     this->name = c.name;
     this->hp = c.hp;
     this->stamina = c.stamina;
@@ -23,7 +23,7 @@ ClapTrap&    ClapTrap::operator=(ClapTrap& c) {
 }
 
 ClapTrap::~ClapTrap() {
-    std::cout << "deconstructor called" << std::endl;
+    std::cout << "ClapTrap deconstructor called" << std::endl;
 }
 
 void    ClapTrap::attack(const std::string& target) {
@@ -55,6 +55,11 @@ std::string	ClapTrap::getName(void)     {return this->name;}
 int			ClapTrap::getHP(void)       {return this->hp;}
 int			ClapTrap::getStamina(void)  {return this->stamina;}
 int			ClapTrap::getAD(void)       {return this->ad;}
+
+void	ClapTrap::setName(std::string _name) {this->name = _name;}
+void	ClapTrap::setHP(int _hp) {this->hp = _hp;}
+void	ClapTrap::setStamina(int _stamina) {this->stamina = _stamina;}
+void	ClapTrap::setAD(int _ad) {this->ad = _ad;}
 
 std::ostream&   operator<<(std::ostream& o, ClapTrap& c) {
 	o << "Name: " << c.getName() << " HP: " << c.getHP() << " Stamina: " << c.getStamina() << " AD: " << c.getAD();
