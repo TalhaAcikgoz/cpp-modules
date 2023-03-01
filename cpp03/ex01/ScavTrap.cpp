@@ -45,7 +45,7 @@ void	ScavTrap::guardGate() {
 
 void	ScavTrap::attack(const std::string& target) {
 	if (this->getStamina() > 0 && this->getHP() > 0) {
-		std::cout << "ScavTrap; " << this->getName() << " locked the " << target 
+		std::cout << this->getName() << " locked the " << target 
 			<< " and given " << this->getAD() << " damage." << std::endl;
 	}
 }

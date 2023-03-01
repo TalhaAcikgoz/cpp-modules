@@ -14,5 +14,8 @@ int main() {
 		ScavTrap	a;
 		ScavTrap	b("eyubi", 100, 49, 28);
 		ScavTrap	c(b);
+		a.attack("ClapTrap");
+		b.attack("emircan");
+		b.takeDamage(101);
 	}
 }
