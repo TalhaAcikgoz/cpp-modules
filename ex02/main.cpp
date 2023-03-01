@@ -1,10 +1,14 @@
-#include <iostream>
+#include "fixed.hpp"
 
-int main(void) {
-    std::string brain = "HI THIS IS BRAIN";
-    std::string *stringPTR = &brain;
-    std::string &stringREF = brain;
-
-    std::cout << "Str memory adress: " << &brain << "\nstringPTR memory adress: " << &stringPTR << "\nstringREF memory adress: " << &stringREF << std::endl;
-    std::cout << "\nStr: " << brain << "\nstringPTR: " << *stringPTR << "\nstringREF: " << stringREF << std::endl;
+int main(int argc, char **argv) {
+	fixed a;
+	fixed const b( fixed( 5.05f ) * fixed( 2 ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << fixed::max( a, b ) << std::endl;
+return 0;
 }
