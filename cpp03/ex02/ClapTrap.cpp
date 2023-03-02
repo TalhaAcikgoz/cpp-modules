@@ -1,10 +1,10 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string _name, int _hp, int _stamina, int _ad): name(_name), hp(_hp), stamina(_stamina), ad(_ad) {
+ClapTrap::ClapTrap(std::string _name): name(_name), hp(10), stamina(10), ad(0) {
     std::cout << "ClapTrap asignment constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(): hp(10), stamina(10), ad(0) {
+ClapTrap::ClapTrap(): hp(10), stamina(10), ad(0), name("ClapTrap") {
     std::cout << "ClapTrap default constructer called" << std::endl;
 }
 

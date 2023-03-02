@@ -2,7 +2,7 @@
 
 int main() {
 	{
-		FragTrap n("clap", 14, 13, 3);
+		FragTrap n("clap");
 		std::cout << n << std::endl;
 		n.attack("aaa");
 		n.beRepaired(20);
@@ -12,12 +12,12 @@ int main() {
 	{
 		std::cout << std::endl << "FragTrap" << std::endl << std::endl;
 		FragTrap	a;
-		FragTrap	b("eyubi", 100, 49, 28);
+		FragTrap	b("eyubi");
 		FragTrap	c(b);
 		a.attack("ClapTrap");
 		b.attack("emircan");
 		b.takeDamage(101);
-		
-		// b.guardGate();
+
+		b.highFivesGuys();
 	}
 }

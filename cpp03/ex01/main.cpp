@@ -2,7 +2,7 @@
 
 int main() {
 	{
-		ScavTrap n("clap", 14, 13, 3);
+		ScavTrap n("clap");
 		std::cout << n << std::endl;
 		n.attack("aaa");
 		n.beRepaired(20);
@@ -12,12 +12,12 @@ int main() {
 	{
 		std::cout << std::endl << "ScavTrap" << std::endl << std::endl;
 		ScavTrap	a;
-		ScavTrap	b("eyubi", 100, 49, 28);
+		ScavTrap	b("eyubi");
 		ScavTrap	c(b);
 		std::cout << c << std::endl;
 		a.attack("ClapTrap");
 		b.attack("emircan");
-		b.takeDamage(101);
+		b.takeDamage(39);
 		b.guardGate();
 	}
 }

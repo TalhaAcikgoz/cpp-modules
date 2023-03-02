@@ -11,7 +11,7 @@ private:
 	int			ad;
 public:
 	ClapTrap();
-	ClapTrap(std::string name, int hp, int stamina, int ad);
+	ClapTrap(std::string name);
 	ClapTrap(ClapTrap& c);
 	~ClapTrap();
 
@@ -22,7 +22,7 @@ public:
 	int			getStamina(void);
 	int			getAD(void);
 
-	void	setName(std::string _name);
+	void	setName(std::string);
 	void	setHP(int _hp);
 	void	setStamina(int _stamina);
 	void	setAD(int _ad);
