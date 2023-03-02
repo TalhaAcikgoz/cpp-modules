@@ -39,7 +39,7 @@ void	ScavTrap::guardGate() {
 	if (this->isGate == false) {
 		std::cout << "Not gating" << std::endl;
 	} else {
-		std::cout << "Gating is so funny" << std::endl;
+		std::cout << "Gate Keeping Mode: Gating is so funny" << std::endl;
 	}
 }
 

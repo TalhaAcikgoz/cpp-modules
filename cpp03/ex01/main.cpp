@@ -14,8 +14,10 @@ int main() {
 		ScavTrap	a;
 		ScavTrap	b("eyubi", 100, 49, 28);
 		ScavTrap	c(b);
+		std::cout << c << std::endl;
 		a.attack("ClapTrap");
 		b.attack("emircan");
 		b.takeDamage(101);
+		b.guardGate();
 	}
 }
