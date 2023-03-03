@@ -19,3 +19,5 @@ public:
     void    attack(const std::string& target);
     void    whoAmI(void);
 };
+
+std::ostream&    operator<<(std::ostream& o, DiamondTrap& n);

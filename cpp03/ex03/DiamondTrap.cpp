@@ -44,5 +44,10 @@ void    DiamondTrap::attack(const std::string& target) {
 }
 
 void    DiamondTrap::whoAmI(void) {
-    std::cout << "I am " << this->getDiaTrapName() << " A.K.A. " << this->getName();
+    std::cout << "I am " << this->getDiaTrapName() << " but you can call me " << this->getName() << std::endl;
+}
+
+std::ostream&    operator<<(std::ostream& o, DiamondTrap& n) {
+    o << "Name: " << n.getName() << " DiamondName " << n.getDiaTrapName() << " HP: " << n.getHP() << " Stamina: " << n.getStamina() << " AD: " << n.getAD();
+    return o;
 }

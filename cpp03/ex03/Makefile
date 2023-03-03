@@ -2,7 +2,7 @@ NAME = diamondtrap
 CC = g++ -std=c++98
 SOURCE = $(wildcard *.cpp)
 OBJECT = $(patsubst %.cpp, %.o, $(SOURCE))
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -Wshadow
 
 $(NAME): all
 
