@@ -38,3 +38,8 @@ FragTrap::~FragTrap() {
 void	FragTrap::highFivesGuys(void) {
 	std::cout << this->getName() << " wanna pat pat your joe mama highFive" << std::endl;
 }
+
+std::ostream&   operator<<(std::ostream& o, FragTrap& c) {
+	o << "Name: " << c.getName() << " HP: " << c.getHP() << " Stamina: " << c.getStamina() << " AD: " << c.getAD();
+    return o;
+}

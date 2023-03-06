@@ -51,10 +51,10 @@ void    ClapTrap::beRepaired(unsigned int amount) {
     }
 }
 
-std::string	ClapTrap::getName(void)     {return this->name;}
-int			ClapTrap::getHP(void)       {return this->hp;}
-int			ClapTrap::getStamina(void)  {return this->stamina;}
-int			ClapTrap::getAD(void)       {return this->ad;}
+std::string	ClapTrap::getName(void) const    {return this->name;}
+int			ClapTrap::getHP(void) const      {return this->hp;}
+int			ClapTrap::getStamina(void) const {return this->stamina;}
+int			ClapTrap::getAD(void) const      {return this->ad;}
 
 void	ClapTrap::setName(std::string _name) {this->name = _name;}
 void	ClapTrap::setHP(int _hp) {this->hp = _hp;}

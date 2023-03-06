@@ -49,3 +49,8 @@ void	ScavTrap::attack(const std::string& target) {
 			<< " and given " << this->getAD() << " damage." << std::endl;
 	}
 }
+
+std::ostream&   operator<<(std::ostream& o, ScavTrap& c) {
+	o << "Name: " << c.getName() << " HP: " << c.getHP() << " Stamina: " << c.getStamina() << " AD: " << c.getAD();
+    return o;
+}

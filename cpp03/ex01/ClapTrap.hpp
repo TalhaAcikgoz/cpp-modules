@@ -17,10 +17,10 @@ public:
 
 	ClapTrap&	operator=(ClapTrap& c);
 
-	std::string	getName(void);
-	int			getHP(void);
-	int			getStamina(void);
-	int			getAD(void);
+	std::string	getName(void) const ;
+	int			getHP(void) const ;
+	int			getStamina(void) const ;
+	int			getAD(void) const ;
 
 	void	setName(std::string);
 	void	setHP(int _hp);
@@ -31,5 +31,3 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 };
-
-std::ostream& operator<<(std::ostream& o, ClapTrap& c);

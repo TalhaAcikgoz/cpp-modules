@@ -15,3 +15,5 @@ public:
 	void	guardGate();
 	void	attack(const std::string& target);
 };
+
+std::ostream&   operator<<(std::ostream& o, ScavTrap& c);
