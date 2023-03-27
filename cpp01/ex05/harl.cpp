@@ -11,11 +11,11 @@ void harl::complain(std::string level)
 		&harl::error
 	};
     std::string a[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    for (int i = 0; i < 4; i++)
+    int i = 0;
+	for (; level.compare(a[i]) && i < 4; i++)
     {
-        if (!level.compare(a[i]))
-            (b.*function[i])();
     }
+	return ((i == 4) ? (void)(NULL) : (b.*function[i])());
 }
 
 void harl::debug (void)
