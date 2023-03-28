@@ -86,13 +86,14 @@ fixed &fixed::operator++(void)
 	this->raw_bits++;
 	return(*this);
 }
+//++a
 fixed fixed::operator++(int)
 {
 	fixed a(this->toFloat());
 	this->raw_bits++;
 	return(a);
 }
-
+//a++
 fixed &fixed::operator--(void)
 {
 	this->raw_bits--;

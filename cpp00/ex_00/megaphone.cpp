@@ -4,7 +4,7 @@
 int main(int ac, char **av) {
     std::string tmp;
     if (ac < 2) {
-        std::cout << "* SILENCE I WISH NOT TO BE H ANYMORE *";
+        std::cout << "* SILENCE I WISH NOT TO BE HORNY ANYMORE *" << std::endl;
         return 1;
     }
     for (int i=1; av[i] != '\0'; i++) {
