@@ -14,6 +14,7 @@ public:
 	~Bureaucrat();
 
 	const std::string   getName(void) const;
+	void	setName(const std::string);
 	int getGrade(void) const;
 
 	const std::string GradeTooHighException;

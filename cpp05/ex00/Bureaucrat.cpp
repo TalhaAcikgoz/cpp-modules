@@ -1,4 +1,4 @@
-#include <Bureaucrat.hpp>
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string _name, int _grade): name(_name) {
 	if (grade <= 150 || grade >= 1) {
@@ -6,16 +6,20 @@ Bureaucrat::Bureaucrat(const std::string _name, int _grade): name(_name) {
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& _copy) {}
+Bureaucrat::Bureaucrat(const Bureaucrat& _copy) {
+	*this = _copy;
+}
 
 const Bureaucrat& Bureaucrat::operator=(const Bureaucrat& _copy) {
-	this->grade = _copy.getGrade();
-	this->name = _copy.getName();
+	Bureaucrat n(_copy.getName(), _copy.getGrade());
+	*this = n;
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat() {}
 
 const std::string Bureaucrat::getName(void) const {return(this->name);}
+void	Bureaucrat::setName(const std::string _n){}
 int Bureaucrat::getGrade(void) const {return(this->grade);}
 
 std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b) {
