@@ -1,12 +1,11 @@
 #include "Bureaucrat.hpp"
 
 int main(){
-    try
-    {
-        throw ;
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    std::string serv("servet");
+    try {
+        Bureaucrat servet("servet", 7);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+    return 0;
 }

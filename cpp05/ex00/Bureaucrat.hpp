@@ -13,12 +13,19 @@ public:
 	const Bureaucrat& operator=(const Bureaucrat& _copy);
 	~Bureaucrat();
 
-	const std::string   getName(void) const;
-	void	setName(const std::string);
-	int getGrade(void) const;
+	const	std::string   getName(void) const;
+	void	setName(const std::string& _n);
+	int		getGrade(void) const;
+	void	setGrade(int _grade);
 
-	const std::string GradeTooHighException;
-	const std::string GradeTooLowException;
+	class GradeTooLowException : public std::exception {
+		public:
+			virtual const char *what() const throw();
+	};
+	class GradeTooHightException : public std::exception {
+		public:
+			virtual const char *what() const throw();
+	};
 };
 
 std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b);
