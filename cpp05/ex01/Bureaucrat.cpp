@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat(const std::string _name, int _grade): name(_name) {
 	try {
 		this->setGrade(_grade);
 	} catch (std::exception& e) {
-		std::err << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 }
 
