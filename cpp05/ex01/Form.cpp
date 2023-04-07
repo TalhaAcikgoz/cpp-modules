@@ -1,45 +1,61 @@
 #include "Form.hpp"
 
-Form::Form(std::string _name, int _mustGrade, int _whoSigned): isSigned(0), mustGrade(_mustGrade), whoSigned(_whoSigned) {
+Form::Form(std::string _name, int _mustGrade, int _mustExecute): isSigned(0), mustGrade(_mustGrade), mustExecute(_mustExecute) {
+	this->setName(_name);
+	std::cout << green << "Form constructor" << white << std::endl;
 }
 
-Form::Form(Form& c): isSigned(c.getSigned()), mustGrade(c.getMustGrade()), whoSigned(c.getWhoSigned()) {
+Form::Form(Form& c): isSigned(c.getSigned()), mustGrade(c.getmustGrade()), mustExecute(c.getmustExecute()) {
+	std::cout << green << "Form copy constructor" << white << std::endl;
 }
 
 Form::~Form() {
-	std::cout << "Form Deconstructor Called" << std::endl;
+	std::cout << red << "Form Deconstructor Called" << white << std::endl;
 }
 
 Form& Form::operator=(Form& c) {
 	this->setName(c.getName());
 	this->setisSigned(c.getSigned());
-	this->setMustGrade(c.getMustGrade());
-	this->setWhoSigned(c.getWhoSigned());
+	this->setmustGrade(c.getmustGrade());
+	this->setmustExecute(c.getmustExecute());
+	return *this;
+}
+
+void	Form::beSigned(Bureaucrat& c) {
+	try {
+		if (c.getGrade() > this->getmustGrade()) {
+			throw GradeTooLowException();
+		} else {
+			std::cout << this->getName() << ", signed from " << c.getName() << std::endl;
+		}
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 const std::string	Form::getName() const {return this->name;}
 const bool			Form::getSigned() const {return this->isSigned;}
-const int			Form::getMustGrade() const {return this->mustGrade;}
-const int			Form::getWhoSigned() const {return this->whoSigned;}
+const int			Form::getmustGrade() const {return this->mustGrade;}
+const int			Form::getmustExecute() const {return this->mustExecute;}
 
 
 void	Form::setName(std::string nameTmp) { const_cast<std::string&>(this->name) = const_cast<std::string&>(nameTmp); }
 void	Form::setisSigned(bool signedTmp) { this->isSigned = signedTmp; }
-void	Form::setMustGrade(const int mustGradeTmp) { const_cast<int&>(this->mustGrade) = const_cast<int&>(mustGradeTmp); }
-void	Form::setWhoGrade(int whoSignedTmp) { this->whoSigned = whoSignedTmp; }
+void	Form::setmustGrade(const int mustGradeTmp) { const_cast<int&>(this->mustGrade) = const_cast<int&>(mustGradeTmp); }
+void	Form::setmustExecute(int mustExecuteTmp) { const_cast<int&>(this->mustExecute) = const_cast<int&>(mustExecuteTmp); }
 
 const char *Form::GradeTooLowException::what() const throw() {
-	return "Grade must bigger than 150 or equal to 150";
+	return "Grade must be bigger than";
 }
 
 const char *Form::GradeTooHightException::what() const throw() {
-	return "Grade must lower than 1 or equal to 1";
+	return "Grade must be lower than";
 }
 
-std::ostream& Form::operator<<(std::ostream& o, Form& n) {
+std::ostream&	operator<<(std::ostream& o, Form& n) {
 	o << "name " << n.getName()
-	<< "signed " << n.getSigned()
-	<< "Grade " << n.getMustGrade()
-	<< "Execute " << n.getWhoSigned() << std::endl;
+	<< " signed " << n.getSigned()
+	<< " Grade " << n.getmustGrade()
+	<< " Execute " << n.getmustExecute();
 	return o;
 }
