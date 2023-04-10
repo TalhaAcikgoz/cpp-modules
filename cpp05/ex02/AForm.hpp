@@ -4,6 +4,10 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+#define green "\033[1;32m"
+#define red "\033[1;31m"
+#define white "\033[0m"
+
 class Bureaucrat;
 
 class AForm {
@@ -21,7 +25,6 @@ public:
 	AForm& operator=(AForm& c);
 
 	void	beSigned(const Bureaucrat& c);
-	virtual void	execute(const Bureaucrat& executer);
 
 	const std::string	getName() const;
 	const bool       	getSigned() const;
