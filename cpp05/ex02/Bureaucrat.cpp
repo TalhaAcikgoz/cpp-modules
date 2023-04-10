@@ -15,9 +15,28 @@ Bureaucrat::Bureaucrat(const Bureaucrat& _copy) {
 }
 
 const Bureaucrat& Bureaucrat::operator=(const Bureaucrat& _copy) {
-	this->setGrade(_copy.getGrade());
-	this->setName(_copy.getName());
+	try {
+		this->setGrade(_copy.getGrade());
+		this->setName(_copy.getName());
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	return *this;
+}
+
+void	Bureaucrat::increment(void) {
+	try {
+		this->setGrade(this->getGrade() - 1);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
+void	Bureaucrat::decrement(void) {
+	try {
+		this->setGrade(this->getGrade() + 1);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 Bureaucrat::~Bureaucrat() { std::cout << red << "Bureaucrat deconstructor" << white << std::endl;}

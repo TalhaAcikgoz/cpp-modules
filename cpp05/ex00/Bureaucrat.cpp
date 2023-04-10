@@ -2,11 +2,7 @@
 
 Bureaucrat::Bureaucrat(const std::string _name, int _grade): name(_name) {
 	std::cout << "default constructor called" << std::endl;
-	try {
-		this->setGrade(_grade);
-	} catch (std::exception& e) {
-		std::err << e.what() << std::endl;
-	}
+	this->setGrade(_grade);
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& _copy) {
@@ -14,9 +10,16 @@ Bureaucrat::Bureaucrat(const Bureaucrat& _copy) {
 }
 
 const Bureaucrat& Bureaucrat::operator=(const Bureaucrat& _copy) {
-	this->setGrade(_copy.getGrade());
-	this->setName(_copy.getName());
+		this->setGrade(_copy.getGrade());
+		this->setName(_copy.getName());
 	return *this;
+}
+
+void	Bureaucrat::increment(void) {
+	this->setGrade(this->getGrade() - 1);
+}
+void	Bureaucrat::decrement(void) {
+	this->setGrade(this->getGrade() + 1);
 }
 
 Bureaucrat::~Bureaucrat() { std::cout << "deconstructor" << std::endl; }
@@ -42,9 +45,9 @@ std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b) {
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade is must lower than 1 or equals to 1";
+	return "Grade is must lower than";
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade is must bigger than 150 or equals to 150";
+	return "Grade is must bigger than";
 }

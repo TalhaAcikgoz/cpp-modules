@@ -1,10 +1,8 @@
 #include "AForm.hpp"
 
-AForm::AForm(): name("AForm"), mustGrade(150), mustExecute(150), isSigned(0) {
-	std::cout << green << "AForm default constructor called" << white << std::endl;
-}
-
 AForm::AForm(std::string _name, int _mustGrade, int _mustExecute): isSigned(0), mustGrade(_mustGrade), mustExecute(_mustExecute) {
+		this->setmustGrade(_mustGrade);
+		this->setmustExecute(_mustExecute);
 	this->setName(_name);
 	std::cout << green << "AForm constructor" << white << std::endl;
 }
@@ -26,14 +24,10 @@ AForm& AForm::operator=(AForm& c) {
 }
 
 void	AForm::beSigned(Bureaucrat& c) {
-	try {
-		if (c.getGrade() > this->getmustGrade()) {
-			throw GradeTooLowException();
-		} else {
-			std::cout << this->getName() << ", signed from " << c.getName() << std::endl;
-		}
-	} catch (std::exception& e) {
-		std::cerr << e.what() << std::endl;
+	if (c.getGrade() > this->getmustGrade()) {
+		throw GradeTooLowException();
+	} else {
+		std::cout << this->getName() << ", signed from " << c.getName() << std::endl;
 	}
 }
 
@@ -45,8 +39,26 @@ const int			AForm::getmustExecute() const {return this->mustExecute;}
 
 void	AForm::setName(std::string nameTmp) { const_cast<std::string&>(this->name) = const_cast<std::string&>(nameTmp); }
 void	AForm::setisSigned(bool signedTmp) { this->isSigned = signedTmp; }
-void	AForm::setmustGrade(const int mustGradeTmp) { const_cast<int&>(this->mustGrade) = const_cast<int&>(mustGradeTmp); }
-void	AForm::setmustExecute(int mustExecuteTmp) { const_cast<int&>(this->mustExecute) = const_cast<int&>(mustExecuteTmp); }
+
+void	AForm::setmustGrade(const int mustGradeTmp) {
+	if (mustGradeTmp > 150) {
+		throw GradeTooLowException();
+	} else if (mustGradeTmp < 1) {
+		throw GradeTooHightException();
+	} else {
+		const_cast<int&>(this->mustGrade) = const_cast<int&>(mustGradeTmp);
+	}
+}
+
+void	AForm::setmustExecute(int mustExecuteTmp) {
+	if (mustExecuteTmp > 150) {
+		throw GradeTooLowException();
+	} else if (mustExecuteTmp < 1) {
+		throw GradeTooHightException();
+	} else {
+		const_cast<int&>(this->mustExecute) = const_cast<int&>(mustExecuteTmp);
+	}
+}
 
 const char *AForm::GradeTooLowException::what() const throw() {
 	return "Grade must be bigger than";

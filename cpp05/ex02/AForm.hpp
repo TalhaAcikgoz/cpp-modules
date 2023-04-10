@@ -20,8 +20,8 @@ public:
 
 	AForm& operator=(AForm& c);
 
-	void	beSigned(Bureaucrat& c);
-	void	execute(const Bureaucrat& executer);
+	void	beSigned(const Bureaucrat& c);
+	virtual void	execute(const Bureaucrat& executer);
 
 	const std::string	getName() const;
 	const bool       	getSigned() const;

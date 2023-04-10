@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() {
+PresidentialPardonForm::PresidentialPardonForm(std::string& _target) {
 	this->setName("PresidentialPardonForm");
 	this->setmustExecute(5);
 	this->setmustGrade(25);
@@ -20,4 +20,19 @@ const PresidentialPardonForm& PresidentialPardonForm::operator=(const Presidenti
 	return *this;
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() { std::cout << red << "PresidentialPardonForm deconstructor" << white << std::endl;}
+PresidentialPardonForm::~PresidentialPardonForm() {
+	std::cout << red << "PresidentialPardonForm deconstructor" << white << std::endl;
+}
+
+void	PresidentialPardonForm::execute(const Bureaucrat& executer) {
+	try {
+		if (executer.getGrade() > this->getmustGrade() || executer.getGrade() > this->getmustExecute())
+			throw GradeTooLowException();
+		else {
+			this->beSigned(executer);
+			std::cout << "Informs that "
+		}
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+}

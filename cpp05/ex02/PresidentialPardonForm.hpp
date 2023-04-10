@@ -9,8 +9,12 @@
 #define white "\033[0m"
 
 class PresidentialPardonForm : public AForm {
+private:
+	std::string	target;
 public:
-	PresidentialPardonForm();
+	void	execute(const Bureaucrat& executer);
+
+	PresidentialPardonForm(std::string& _target);
 	PresidentialPardonForm(const PresidentialPardonForm& _copy);
 	const PresidentialPardonForm& operator=(const PresidentialPardonForm& _copy);
 	~PresidentialPardonForm();
