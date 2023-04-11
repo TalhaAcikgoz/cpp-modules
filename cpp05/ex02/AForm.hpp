@@ -20,12 +20,12 @@ public:
 	AForm();
 	AForm(std::string _name, int _mustGrade, int _mustExecute);
 	AForm(AForm& c);
-	virtual ~AForm() = 0;
+	virtual ~AForm();
 
 	AForm& operator=(AForm& c);
 
-	void	beSigned(const Bureaucrat& c);
-	virtual void	execute(const Bureaucrat& executer) const ;
+	void	beSigned(Bureaucrat& c);
+	virtual void	execute(const Bureaucrat& executer) const = 0;
 
 	const std::string	getName() const;
 	const bool       	getSigned() const;

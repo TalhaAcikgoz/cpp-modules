@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string& _target): target(_target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string _target): target(_target) {
     this->setName("RobotomyRequestForm");
     this->setmustGrade(72);
     this->setmustExecute(45);
@@ -24,13 +24,12 @@ RobotomyRequestForm::~RobotomyRequestForm() {
     std::cout << red << "Robotomy deconst called" << white << std::endl;
 }
 
-void	RobotomyRequestForm::execute(const Bureaucrat& executer) {
+void	RobotomyRequestForm::execute(const Bureaucrat& executer) const {
 	if (executer.getGrade() > this->getmustGrade() || executer.getGrade() > this->getmustExecute())
 		throw GradeTooLowException();
 	else if (this->getSigned() == false)
 		std::cout << "Form not signed" << std::endl;
 	else {
-		this->beSigned(executer);
 		if (rand() % 2 == 0)
             std::cout << this->target << " has been robotomized succesfully" << std::endl;
         else

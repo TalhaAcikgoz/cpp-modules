@@ -1,5 +1,9 @@
 #include "AForm.hpp"
 
+AForm::AForm(): mustGrade(0), mustExecute(0) {
+	std::cout << green << "AForm constructor" << white << std::endl;
+}
+
 AForm::AForm(std::string _name, int _mustGrade, int _mustExecute): isSigned(0), mustGrade(_mustGrade), mustExecute(_mustExecute) {
 	this->setmustGrade(_mustGrade);
 	this->setmustExecute(_mustExecute);
@@ -23,10 +27,11 @@ AForm& AForm::operator=(AForm& c) {
 	return *this;
 }
 
-void	AForm::beSigned(const Bureaucrat& c) {
+void	AForm::beSigned(Bureaucrat& c) {
 	if (c.getGrade() > this->getmustGrade()) {
 		throw GradeTooLowException();
 	} else {
+		this->setisSigned(1);
 		std::cout << this->getName() << ", signed from " << c.getName() << std::endl;
 	}
 }

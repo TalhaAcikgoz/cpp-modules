@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string& _target): target(_target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string _target): target(_target) {
     this->setisSigned(false);
     this->setmustGrade(145);
     this->setmustExecute(137);
@@ -25,21 +25,31 @@ ShrubberyCreationForm&  ShrubberyCreationForm::operator=(const ShrubberyCreation
 	return *this;
 }
 
-void    ShrubberyCreationForm::execute(const Bureaucrat& executer) {
+void    ShrubberyCreationForm::execute(const Bureaucrat& executer) const {
+    std::cout << "slakdfj" << std::endl;
 	if (executer.getGrade() > this->getmustGrade() || executer.getGrade() > this->getmustExecute())
 		throw GradeTooLowException();
 	else if (this->getSigned() == false)
 		std::cout << "Form not signed" << std::endl;
 	else {
-		this->beSigned(executer);
-		this->target + "_shrubbery";
-        const char *filename = this->target.data();
+        std::string ascii_trees =       "\n" 
+									"         O                     O\n"
+									"        $$$                   $$$\n"
+									"       $$$$$                 $$$$$\n"
+									"      $$$$$$$               $$$$$$$\n"
+									"     $$$$$$$$$             $$$$$$$$$\n"
+									"    $$$$$$$$$$$           $$$$$$$$$$$\n"
+									"   $$$$$$$$$$$$$         $$$$$$$$$$$$$\n"
+									"  $$$$$$$$$$$$$$$       $$$$$$$$$$$$$$$\n"
+									" $$$$$$$$$$$$$$$$$     $$$$$$$$$$$$$$$$$\n"
+									"$$$$$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$$$$\n"
+									"        |||                   |||\n"
+									"        |||                   |||\n"
+									"        |||                   |||\n"
+									"        |||                   |||";
+        std::string filename(this->target+"_shrubbery");
         std::ofstream   a(filename, std::ofstream::trunc | std::ofstream::out);
-        for (int i = 0; i < 128; i++) {
-            if (std::isprint(i) && std::isalnum(i))
-            std::cout << static_cast<char>(i) << " ";
-        }
-        std::cout << std::endl;
+        a << ascii_trees << std::endl;
         a.close();
 	}
 }

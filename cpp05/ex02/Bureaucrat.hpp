@@ -9,7 +9,7 @@
 #define red "\033[1;31m"
 #define white "\033[0m"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 protected:
@@ -21,7 +21,7 @@ public:
 	const Bureaucrat& operator=(const Bureaucrat& _copy);
 	~Bureaucrat();
 
-	void	signForm(AForm& c);
+	void	signForm(AForm& c) const ;
 	void	executeForm(const AForm& form);
 
 	const	std::string   getName(void) const;
