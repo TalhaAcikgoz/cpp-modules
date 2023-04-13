@@ -26,7 +26,6 @@ ShrubberyCreationForm&  ShrubberyCreationForm::operator=(const ShrubberyCreation
 }
 
 void    ShrubberyCreationForm::execute(const Bureaucrat& executer) const {
-    std::cout << "slakdfj" << std::endl;
 	if (executer.getGrade() > this->getmustGrade() || executer.getGrade() > this->getmustExecute())
 		throw GradeTooLowException();
 	else if (this->getSigned() == false)
@@ -47,9 +46,12 @@ void    ShrubberyCreationForm::execute(const Bureaucrat& executer) const {
 									"        |||                   |||\n"
 									"        |||                   |||\n"
 									"        |||                   |||";
-        std::string filename(this->target+"_shrubbery");
+        std::string filename(this->target + "_shrubbery");
         std::ofstream   a(filename, std::ofstream::trunc | std::ofstream::out);
-        a << ascii_trees << std::endl;
+		if (a.is_open())
+        	a << ascii_trees << std::endl;
+		else
+			std::cout << "file is not created" << std::endl;
         a.close();
 	}
 }

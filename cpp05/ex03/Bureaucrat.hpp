@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include "AForm.hpp"
+#include "Form.hpp"
 
 #define green "\033[1;32m"
 #define red "\033[1;31m"
@@ -21,8 +21,8 @@ public:
 	const Bureaucrat& operator=(const Bureaucrat& _copy);
 	~Bureaucrat();
 
-	void	signForm(AForm& c);
-	void	executeForm(const AForm& form);
+	void	signForm(Form& c) const ;
+	void	executeForm(const Form& form);
 
 	const	std::string   getName(void) const;
 	void	setName(std::string _n) ;

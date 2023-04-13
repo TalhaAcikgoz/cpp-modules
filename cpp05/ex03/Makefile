@@ -1,6 +1,6 @@
 NAME = form
 CC = g++
-FLAG = -Wall -Wextra -Werror -std=c++98
+FLAG = -Wall -Wextra -Werror 
 SOURCE = $(wildcard *.cpp)
 OBJECT = $(patsubst %.cpp, %.o, $(SOURCE))
 
@@ -14,6 +14,6 @@ fclean: clean
 	rm -rf $(NAME)
 
 clean:
-	rm -rf
+	rm -rf $(OBJECT)
 
 re: fclean all

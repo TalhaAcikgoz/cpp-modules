@@ -21,7 +21,7 @@ int main(void)
 	std::cout << std::endl;
 	try{
 		std::cout << "===========ShrubberyCreationForm Success Test===========" << std::endl;
-		ShrubberyCreationForm s1("Shrubbery");
+		ShrubberyCreationForm s1("eyup");
 		s1.beSigned(b1);
 		b1.signForm(s1);
 		b1.executeForm(s1);
@@ -38,7 +38,7 @@ int main(void)
 	try{
 
 		std::cout << "============ShrubberyCreationForm Fail Test============" << std::endl;
-		ShrubberyCreationForm s2("Shrubbery");
+		ShrubberyCreationForm s2("furkan");
 		s2.beSigned(b3);
 		b3.signForm(s2);
 		b3.executeForm(s2);

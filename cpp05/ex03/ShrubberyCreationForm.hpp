@@ -1,17 +1,17 @@
 #pragma once
 
-#include "AForm.hpp"
+#include "Form.hpp"
 #include <iostream>
 #include <fstream>
 
-class ShrubberyCreationForm : public AForm {
+class ShrubberyCreationForm : public Form {
 private:
     std::string target;
 public:
-    ShrubberyCreationForm(std::string& _target);
+    ShrubberyCreationForm(std::string _target);
     ShrubberyCreationForm(const ShrubberyCreationForm& c);
     ShrubberyCreationForm&  operator=(const ShrubberyCreationForm& c);
-    ~ShrubberyCreationForm();
+    virtual ~ShrubberyCreationForm();
 
-    void    execute(const Bureaucrat& executer);
+    void    execute(const Bureaucrat& executer) const ;
 };

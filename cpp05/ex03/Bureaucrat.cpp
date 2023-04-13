@@ -41,10 +41,10 @@ void	Bureaucrat::decrement(void) {
 
 Bureaucrat::~Bureaucrat() { std::cout << red << "Bureaucrat deconstructor" << white << std::endl;}
 
-void	Bureaucrat::signForm(AForm& c) {
+void	Bureaucrat::signForm(Form& c) const {
 	try {
 		if (c.getmustGrade() < this->getGrade()) {
-			std::cout << this->getName() << " couldn't sign " << c.getName() << " because ";
+			std::cout << this->getName() << " couldn't sign " << c.getName() << " because " << std::endl;
 			throw GradeTooLowException();
 		} else {
 			c.setisSigned(1);
@@ -55,8 +55,9 @@ void	Bureaucrat::signForm(AForm& c) {
 	}
 }
 
-void	Bureaucrat::executeForm(const AForm& form) {
+void	Bureaucrat::executeForm(const Form& form) {
 	form.execute(*this);
+	// std::cout << form.getName() << "executed from " << this->getName() << std::endl;
 }
 
 const	std::string Bureaucrat::getName(void) const { return(this->name); }
