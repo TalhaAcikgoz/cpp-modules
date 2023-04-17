@@ -14,7 +14,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& c) {
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-    std::cout << green << "ShrubberyCreation deconstructor called" << white << std::endl;
+    std::cout << red << "ShrubberyCreation deconstructor called" << white << std::endl;
 }
 
 ShrubberyCreationForm&  ShrubberyCreationForm::operator=(const ShrubberyCreationForm& c) {

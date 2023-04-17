@@ -18,7 +18,7 @@ public:
 	int		getGrade(void) const;
 	void	setGrade(int _grade);
 
-	void	increment(void);
+	void	increment(void); 
 	void	decrement(void);
 
 	class GradeTooLowException : public std::exception {
