@@ -4,8 +4,12 @@
 #include <iostream>
 #include <ctype.h>
 
+
+
 class ScalarConverter {
+	private:
+		std::string input;
+		int type;
 	public:
-		int flag;
 		static void    convert(std::string str);
 };
