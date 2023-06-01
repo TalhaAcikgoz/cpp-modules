@@ -9,7 +9,7 @@ int main() {
     }
     a.push_back(8);
     try {
-        std::cout << static_cast<int>(easyfind(a, 8)) << std::endl;
+        std::cout << easyfind(a, 8) << std::endl;
     } catch (std::exception &e) {
         std::cerr << e.what() << std::endl;
     }

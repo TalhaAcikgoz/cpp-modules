@@ -1,6 +1,7 @@
 #include "Span.hpp"
 
 Span::Span(unsigned int _n) : n(_n) {
+	this->n = _n;
 }
 
 Span::Span(Span &c) {
@@ -17,7 +18,9 @@ Span::~Span() {
 	this->sp.clear();
 }
 
-void    Span::addNumber(int num) {
+void    Span::addNumber(long num) {
+	if (num > INT_MAX || num < INT_MIN)
+		throw OutOffLimits();
 	if (this->sp.size() < this->n) {
 		this->sp.push_back(num);
 	} else {
@@ -62,12 +65,6 @@ int	Span::shortestSpan() {
 
 int Span::longestSpan() {
 	int max = this->max();
-	int x = 0;
-	for (; x <= max; x++) {
-		for (std::list<int>::iterator ix = this->sp.begin(); ix != sp.end(); ix++) {
-			if (max - x == *ix && max != *ix)
-				return x;
-		}
-	}
-	return -1;
+	int min = this->min();
+	return (max - min);
 }

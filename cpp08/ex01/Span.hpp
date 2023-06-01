@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <limits>
 
 class Span {
 	public:
@@ -16,7 +17,7 @@ class Span {
 		Span	&operator=(Span &c);
 		~Span();
 
-		void	addNumber(int num);
+		void	addNumber(long num);
 		int		shortestSpan();
 		int		longestSpan();
 
@@ -27,6 +28,12 @@ class Span {
 			public:
 				virtual const char *what() const throw() {
 					return "List is full.";
+				}
+		};
+		class OutOffLimits : public std::exception {
+			public:
+				virtual const char *what() const throw() {
+					return "Out off limits.";
 				}
 		};
 };
