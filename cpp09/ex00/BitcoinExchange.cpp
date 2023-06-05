@@ -1,28 +1,44 @@
 #include "BitcoinExchange.hpp"
 
-void    BitcoinExchange::readdata(std::string path) {
-	std::ifstream	file("data.csv", std::ios::in);
-	std::string								  line;
-	std::pair<std::string, std::string>		   tmp;
+void    BitcoinExchange::readdata() {
+    std::ifstream file("data.csv");
+    if (file.is_open()) {
+            std::string line;
 
-	if (!file.is_open()) {
-		throw FileNotOpen();
-	}
-	std::ofstream out("out.csv", std::ios::trunc);
-	getline(file, line);
-	for (;getline(file, tmp.first, ',');) {
-		getline(file, tmp.second);
-		this->data[tmp.first] = std::stod(tmp.second);
-	}
-	file.close();
-	file.open(path, std::ios::in);
-	getline(file, line);
-	for (; getline(file, tmp.first, '|');) {
-		getline(file, tmp.second);
-		this->exchange[tmp.first] = std::stod(tmp.second);
-	}
+            while (std::getline(file, line)) {
+                std::stringstream ss(line);
+                std::string key;
+                double value;
+
+                if (std::getline(ss, key, ',') && ss >> value) {
+                    data[key] = value;
+                }
+            }
+            file.close();
+    }
 }
 
-print
-std::ofstream out("out.csv", std::ios::trunc);
-out << tmp.first << ',' << this->data[tmp.first] << std::endl;
+double BitcoinExchange::give_back_data(std::string key, double value) {
+    if (key < data.begin()->first)
+        return (0);
+    else {
+        std::map<std::string, double>::iterator prev = data.begin();
+        std::map<std::string, double>::iterator it;
+        for (it = data.begin(); it != data.end(); ++it) {
+            if (it->first >= key || it->first == key) {
+                if (it->first == key)
+                    return (value * it->second);
+                else
+                    return (value * prev->second);
+            }
+            prev = it;
+        }
+    }
+    return (1);
+}
+
+void    BitcoinExchange::print(void) {
+    for (std::map<std::string, double>::iterator it = this->data.begin(); it != this->data.end(); it++) {
+        std::cout << it->first << " " << it->second << std::endl;
+    }
+}
