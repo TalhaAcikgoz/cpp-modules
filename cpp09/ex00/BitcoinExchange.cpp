@@ -25,7 +25,7 @@ double BitcoinExchange::give_back_data(std::string key, double value) {
         std::map<std::string, double>::iterator prev = data.begin();
         std::map<std::string, double>::iterator it;
         for (it = data.begin(); it != data.end(); ++it) {
-            if (it->first >= key || it->first == key) {
+            if (it->first >= key) {
                 if (it->first == key)
                     return (value * it->second);
                 else
